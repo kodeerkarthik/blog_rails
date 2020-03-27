@@ -10,9 +10,23 @@
 </head>
 
 
-<body class='container mt-5 bg-light'>
-
-<%= yield %>
-
+<body class="bg-light">
+  <nav class="navbar navbar-info bg-info ">
+    <% if user_signed_in? %>
+      <span>Logged in as : <b class="text-light"><%= current_user.email %></b></span>
+      <span>
+        <%= link_to 'Edit profile', edit_user_registration_path,:class=>'btn btn-sm btn-warning mr-4' %> 
+        <%= link_to "Logout", destroy_user_session_path, method: :delete,:class=>'btn btn-sm btn-danger text-light mr-4' %>
+      </span>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path ,:class=>'btn btn-sm btn-secondary text-light' %> 
+      <%= link_to "Login", new_user_session_path, :class=>'btn btn-sm btn-primary text-light' %>
+    <% end %>
+  </nav>
+  <div class='container mt-5'>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </div>
 </body>
 </html>
