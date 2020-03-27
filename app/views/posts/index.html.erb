@@ -1,0 +1,30 @@
+<h3>LISTING POSTS</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th class='pl-5 pr-5 text-danger'>Title</th>
+      <th class='pl-5 pr-5 text-danger'>Body</th>
+      <th class='pl-5 pr-5 text-danger' colspan=3>Actions</th>
+      
+    </tr>
+  </thead>
+  <hr>  
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td class='pl-5 pr-5'><%= post.title %></td>
+        <td class='pl-5 pr-5'><%= post.body %></td>
+        <td><%= link_to 'Show', post ,:class=>'btn btn-sm btn-info text-light'%></td>
+        <td><%= link_to 'Edit', edit_post_path(post) ,:class=>'btn btn-sm btn-warning text-light'%></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } ,:class=>'btn btn-sm btn-danger text-light'%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<hr>
+<%= link_to 'New Post', new_post_path , :class=>'btn btn-info btn-sm text-light' %>
+<%= link_to 'Home', '/', :class=>'btn btn-primary btn-sm text-light' %>
+<hr>  
