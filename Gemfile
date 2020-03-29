@@ -37,10 +37,13 @@ end
 
 # Use unicorn as the app server
 # gem 'unicorn'
-
+gem "cancan"
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
-
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug'
+end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem 'devise'
